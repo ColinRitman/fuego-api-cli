@@ -2,7 +2,7 @@ import { Command } from 'commander';
 import { hideBin } from 'yargs/helpers';
 import yargs from 'yargs/yargs';
 import inquirer from 'inquirer';
-import ccx from 'conceal-api';
+import ccx from 'fuego-api';
 import path from 'path';
 import fs from  'fs';
 // creating a command instance
@@ -11,8 +11,8 @@ const program = new Command();
 let config = {
   daemonHost: 'http://127.0.0.1', 
   walletHost: 'http://127.0.0.1', 
-  daemonRpcPort: 16000,
-  walletRpcPort: 6061,
+  daemonRpcPort: 8888,
+  walletRpcPort: 9999,
   timeout: 5000
 }
 
@@ -36,12 +36,12 @@ if (argv.walletdHost) { config.daemonHost = argv.walletdHost; }
 if (argv.walletdPort) { config.walletRpcPort = argv.walletdPort; }
 
 // create the api with the config
-const ccxApi = new ccx(config);
+const xfgApi = new xfg(config);
 
 // creating tool
 program
-  .name("conceal-api-demo")
-  .description("A CLI demo for conceal api")
+  .name("fuego-api-demo")
+  .description("A CLI demo for fuego api")
   .option('--dh, --daemon-host <type>', 'Daemon Host (URL)')
   .option('--dp, --daemon-port <type>', 'Daemon Port (Number)')
   .option('--wh, --walletd-host <type>', 'Walletd Host (URL)')
@@ -86,7 +86,7 @@ deposit
   });
 deposit
   .command('sendDeposit')
-  .description('The sendDeposit method creates a new deposit with a source address and a term and sends it to another wallet.')
+  .description('The sendDeposit method creates a new deposit with a source address & term and sends it to another wallet.')
   .action(() => {
     inquirer.prompt([
       {
@@ -96,11 +96,11 @@ deposit
       },{
         type: 'input',
         name: 'destAddress',
-        message: 'Enter destionation address:'
+        message: 'Enter destination address:'
       },{
         type: 'number',
         name: 'amount',
-        message: 'Enter ammount:'
+        message: 'Enter amount:'
       },{
         type: 'number',
         name: 'term',
@@ -503,7 +503,7 @@ transaction
         message: 'A paymentId that must be used in the returned transaction hashes:'
       }
     ]).then((answers) => {
-      ccxApi.getTransactionHashes({
+      xfgApi.getTransactionHashes({
         addresses: Array.from(answers.addressList),
         blockCount: answers.blockCount,
         blockHash: answers.blockHash,
@@ -527,7 +527,7 @@ transaction
         message: 'Addresses to check for unconfirmed transactions (delimited by comma). If addresses is empty, all addresses of the container will be checked:'
       }
     ]).then((answers) => {    
-      ccxApi.getUnconfirmedTransactionHashes(Array.from(answers.addressList)).then(result => {
+      xfgApi.getUnconfirmedTransactionHashes(Array.from(answers.addressList)).then(result => {
         console.log(result);
       }).catch(err => {
         console.error(err);
