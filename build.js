@@ -10,7 +10,7 @@ import fs from 'fs';
 
   await caxa({
     input: ".",
-    output: os.platform() === "win32" ? "./bin/conceal-cli.exe" : "./bin/conceal-cli",
+    output: os.platform() === "win32" ? "./bin/fuego-cli.exe" : "./bin/fuego-cli",
     command: [
       "{{caxa}}/node_modules/.bin/node",
       "{{caxa}}/index.js"
@@ -18,8 +18,8 @@ import fs from 'fs';
   });
 
   if (os.platform() === "win32") {
-    await compress.zip.compressDir("./bin", "./conceal-cli.zip");
+    await compress.zip.compressDir("./bin", "./fuego-cli.zip");
   } else {
-    await compress.tgz.compressDir("./bin", "./conceal-cli.tar.gz");
+    await compress.tgz.compressDir("./bin", "./fuego-cli.tar.gz");
   }
 })();
