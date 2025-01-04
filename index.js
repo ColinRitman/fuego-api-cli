@@ -2,7 +2,7 @@ import { Command } from 'commander';
 import { hideBin } from 'yargs/helpers';
 import yargs from 'yargs/yargs';
 import inquirer from 'inquirer';
-import ccx from 'fuego-api';
+import xfg from 'fuego-api';
 import path from 'path';
 import fs from  'fs';
 // creating a command instance
