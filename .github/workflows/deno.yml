@@ -5,7 +5,7 @@
 
 # This workflow will install Deno then run `deno lint` and `deno test`.
 # For more information see: https://github.com/denoland/setup-deno
-- name: Setup Node.js environment
+name: Setup Node.js environment
   uses: actions/setup-node@v4.1.0
   with:
     # Set always-auth in npmrc.
@@ -29,7 +29,7 @@
     # Used to specify the path to a dependency file: package-lock.json, yarn.lock, etc. Supports wildcards or a list of file names for caching multiple dependencies.
     cache-dependency-path: # optional
           
-            - name: Upload a Build Artifact
+             name: Upload a Build Artifact
   uses: actions/upload-artifact@v4.5.0
   with:
     # Artifact name
@@ -57,7 +57,7 @@ Minimum 1 day. Maximum 90 days unless changed from the repository settings page.
 
     include-hidden-files: # optional, default is false
           
-- name: Deno
+ name: Deno
 
 on:
   push:
