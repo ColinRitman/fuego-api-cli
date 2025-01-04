@@ -1,7 +1,7 @@
 {
-  "name": "conceal-api-cli",
+  "name": "fuego-api-cli",
   "version": "1.0.1",
-  "description": "CLI for Conceal JS API",
+  "description": "CLI for Fuego JS API",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -9,10 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ConcealNetwork/conceal-api-cli.git"
+    "url": "git+https://github.com/colinritman/fuego-api-cli.git"
   },
   "keywords": [
-    "conceal",
+    "fuego",
     "cryptocurrency",
     "rpc",
     "api",
